@@ -1,0 +1,6 @@
+[book]
+authors = ["phucvinh57"]
+language = "en"
+multilingual = false
+src = "src"
+title = "HPC Monitoring Documentation"
