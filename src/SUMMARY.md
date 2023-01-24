@@ -6,4 +6,5 @@
 - [Virtual Sensor](./virtual-sensor/index.md)
 - [Devops](./devops/index.md)
   - [Github workflows settings](./devops/GithubWorkflow.md)
+  - [Linux container (LXC)](./devops/LXCContainer.md)
 - [User guides](./user-guides/index.md)
