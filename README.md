@@ -1,6 +1,6 @@
 # HPC monitoring documentation
 
-## Prerequisite
+## Installation
 
 Install [Rust toolchain](https://www.rust-lang.org/tools/install) first. Then install `mdbook`:
 
@@ -10,8 +10,12 @@ cargo install mdbook
 
 ## How to use
 
-- To run: `mdbook serve`
-- To build: `mdbook build`
-- To run on hot reload mode: `mdbook watch`
+To run this book:
+
+```bash
+mdbook serve [--port <your_port>]
+```
+
+If `--port` option is not provided, default host port is `3000`.
 
 For book structure guide, visit <https://rust-lang.github.io/mdBook/format/summary.html>.
