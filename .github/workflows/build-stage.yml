@@ -29,7 +29,6 @@ jobs:
         git update-ref -d refs/heads/gh-pages
         rm -rf *
         mv ../book/* .
-        git checkout gh-pages
         git add .
         git commit -m "Deploy $GITHUB_SHA to gh-pages"
-        git push
+        git push -u origin gh-pages
