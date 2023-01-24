@@ -6,7 +6,7 @@ For details about self-hosted github runners, visit <https://docs.github.com/en/
 
 ## Install LXC
 
-Full doc about installation goes [here](https://linuxcontainers.org/lxc/getting-started).
+Full documentation about installation goes [here](https://linuxcontainers.org/lxc/getting-started).
 For security reasons, we create an unprivileged container as a user by these following steps:
 
 ### Init configurations
