@@ -1,6 +1,9 @@
 # Summary
 
-- [Chapter 1](./chapter1/index.md)
-  - [Sub chapter](./chapter1/subchapter.md)
+- [Introduction](./introduction/index.md)
+- [Architecture](./architecture/index.md)
+- [Sensor Manager](./sensor-manager/index.md)
+- [Virtual Sensor](./virtual-sensor/index.md)
 - [Devops](./devops/index.md)
   - [Github workflows settings](./devops/GithubWorkflow.md)
+- [User guides](./user-guides/index.md)
