@@ -9,13 +9,6 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 # Allow one concurrent deployment
 concurrency:
   group: "pages"
@@ -30,14 +23,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        env:
+          GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
         uses: actions/checkout@v3
       - name: Setup Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
         uses: actions/configure-pages@v2
       - name: Upload artifact
+        env:
+          GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
           path: '.'
       - name: Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
         id: deployment
         uses: actions/deploy-pages@v1
