@@ -1,6 +1,6 @@
 # HPC monitoring documentation
 
-[![Deploy Status](https://github.com/HPCMonitoring/docs/workflows/CI/badge.svg?event=push)](https://github.com/HPCMonitoring/docs/actions?workflow=Deploy)
+[![Deploy Status](https://github.com/HPCMonitoring/docs/workflows/Build%20and%20deploy/badge.svg?event=push)](https://github.com/HPCMonitoring/docs/actions?workflow=Build%20and%20deploy) [![Testing Status](https://github.com/HPCMonitoring/docs/workflows/CI/badge.svg?event=pull_request)](https://github.com/HPCMonitoring/docs/actions?workflow=CI)
 
 ## Installation
 
