@@ -1,6 +1,6 @@
 # Introduction
 
-From a thesis ...
+From a thesis in [Ho Chi Minh University of Technology](https://hcmut.edu.vn/) ...
 
 ## Our HPC system problem
 
