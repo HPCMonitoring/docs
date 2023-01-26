@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 env:
-  GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
+  GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT_TOKEN }}
 
 jobs:
   build:
