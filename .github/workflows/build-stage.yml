@@ -10,27 +10,28 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
+
 jobs:
   build:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      env:
-        GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
-      with:
-        fetch-depth: 0
-    - name: Install mdbook 🏁
-      run: |
-        mkdir mdbook
-        curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook
-        echo `pwd`/mdbook >> $GITHUB_PATH
-    - name: Build book 🪛
-      run: |
-        mdbook build
-    - name: Deploy 🚀
-      env:
-        GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: book # The folder the action should deploy.
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: Install mdbook 🏁
+        run: |
+          mkdir mdbook
+          curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz | tar -xz --directory=./mdbook
+          echo `pwd`/mdbook >> $GITHUB_PATH
+      - name: Build book 🪛
+        run: |
+          mdbook build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: book # The folder the action should deploy.
