@@ -29,6 +29,8 @@ jobs:
       run: |
         mdbook build
     - name: Deploy 🚀
+      env:
+        GITHUB_TOKEN: ${{ secrets.DOCS_DEPLOYMENT }}
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: book # The folder the action should deploy.
