@@ -147,7 +147,126 @@
 <p>Link to relate document parts.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sensor-manager"><a class="header" href="#sensor-manager">Sensor manager</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="virtual-sensor"><a class="header" href="#virtual-sensor">Virtual Sensor</a></h1>
-<p>Built in <code>C++</code>.</p>
+<p>Virtual sensor documentation.</p>
+<h2 id="collected-data-descriptions"><a class="header" href="#collected-data-descriptions">Collected data descriptions</a></h2>
+<h3 id="common-data"><a class="header" href="#common-data">Common data</a></h3>
+<ul>
+<li><code>pid</code>: Process ID</li>
+<li><code>parent_pid</code>: Parent process ID</li>
+<li><code>uid</code>: User ID, assigned to each user account on a system.
+<ul>
+<li>Root user has UID 0</li>
+<li>Non-root users have a UID of 1000 or higher</li>
+</ul>
+</li>
+<li><code>effective_uid</code>: used to determine the permissions and actions that a user can perform
+<ul>
+<li>When a process is executed, it inherits the effective UID of the user who started it</li>
+<li>In some cases, a process may change its effective UID to gain additional privileges or to assume the identity of another user. This is often done by the <code>su</code> or <code>sudo</code> commands</li>
+</ul>
+</li>
+<li><code>saved_uid</code>: is a value stored by the system that represents the real UID of a process
+<ul>
+<li>The saved UID is used to restore the real UID after the process has finished executing with the elevated privileges base on effective UID</li>
+</ul>
+</li>
+<li><code>fs_uid</code>: File system user ID, used to associate file system permissions with a specific user or group of users
+<ul>
+<li>Be stored as part of the file system metadata</li>
+<li>Typically the same as the UID of the user who created a file, but it can be changed through various file system commands, such as <code>chown</code>.</li>
+</ul>
+</li>
+<li><code>gid</code>: User group ID:
+<ul>
+<li>Used to track and manage the permissions and access controls for collections of users</li>
+<li>Each user on a Linux system is typically a member of one or more groups, and each file or directory on the system is associated with a specific group</li>
+</ul>
+</li>
+<li><code>effective_gid</code>: Similar to effective UID, but for a group</li>
+<li><code>saved_gid</code>: Similar to saved UID, but for a group</li>
+<li><code>fs_gid</code>: Similar to file system UID, but for a group</li>
+<li><code>executed_path</code>: process pwd</li>
+<li><code>command</code>: command line used to run process</li>
+<li><code>child_pid_list</code>: List of child PIDs</li>
+<li><code>threads</code>: List of process's <a href="virtual-sensor/index.html#thread-data">threads</a></li>
+<li><code>stats</code>: <a href="virtual-sensor/index.html#statistic-data">Process statistic</a></li>
+</ul>
+<h3 id="data-in-namespace"><a class="header" href="#data-in-namespace">Data in namespace</a></h3>
+<p>A process runs in container such as <code>Docker</code>, <code>LXC</code> ... or runs in a VM has its own namespace. Inside its namespace, it has extra same <a href="virtual-sensor/index.html#common-data">information types</a> like a process runs on host.</p>
+<h3 id="thread-data"><a class="header" href="#thread-data">Thread data</a></h3>
+<ul>
+<li><code>tid</code>: Thread ID</li>
+<li><code>timestamp</code></li>
+<li><code>resource_consumptions</code>: <a href="virtual-sensor/index.html#resource-consuming-statistic-data">Resource consumed</a></li>
+</ul>
+<p>If a thread belongs to a process inside container or VM, it also has another TID in its namespace.</p>
+<h3 id="statistic-data"><a class="header" href="#statistic-data">Statistic data</a></h3>
+<ul>
+<li><code>timestamp</code></li>
+<li><code>resource_consumptions</code>: <a href="virtual-sensor/index.html#resource-consuming-statistic-data">Resource consumed</a></li>
+<li><code>rss</code>: Resident set size, a measure of memory usage in the Linux operating system.
+<ul>
+<li>Represents the portion of a process's virtual memory that is held in RAM and is available for immediate use</li>
+<li>Can help user identify memory-intensive processes and determine whether the system has enough memory to run all its processes effectively</li>
+</ul>
+</li>
+<li><code>vss</code>: Virtual set size, another measure of memory usage in the Linux operating system
+<ul>
+<li>Represents the total amount of virtual memory that a process is using, including memory that may be swapped to disk</li>
+</ul>
+</li>
+<li><code>swap</code>: ??????</li>
+<li><code>network_stats</code>: <a href="virtual-sensor/index.html#network-statistic-data">Network stat</a></li>
+</ul>
+<h3 id="resource-consuming-statistic-data"><a class="header" href="#resource-consuming-statistic-data">Resource consuming statistic data</a></h3>
+<ul>
+<li><code>system_cpu_time</code>: the amount of time that the system has spent executing on system-level</li>
+<li><code>user_cpu_time</code>: the amount of time that the system has spent executing on user-level</li>
+<li><code>io_read</code></li>
+<li><code>io_write</code></li>
+<li><code>block_io_read</code></li>
+<li><code>block_io_write</code></li>
+</ul>
+<h3 id="network-statistic-data"><a class="header" href="#network-statistic-data">Network statistic data</a></h3>
+<ul>
+<li><code>packet_stats</code>: <a href="virtual-sensor/index.html#network-packet-statistics-data">Packet statistics</a></li>
+<li><code>interface_stats</code>: A hash map [interface name] -&gt; <a href="virtual-sensor/index.html#interface-statistic-data">Interface stat</a></li>
+</ul>
+<h3 id="interface-statistic-data"><a class="header" href="#interface-statistic-data">Interface statistic data</a></h3>
+<ul>
+<li><code>iname</code>: Interface name</li>
+<li><code>packet_stats</code>: <a href="virtual-sensor/index.html#network-packet-statistics-data">Packet statistics</a></li>
+</ul>
+<p>connection_stats: A hash map <a href="virtual-sensor/index.html#connection">Connection</a> -&gt; <a href="virtual-sensor/index.html#connection-statistic-data">Connection stat</a></p>
+<h3 id="connection"><a class="header" href="#connection">Connection</a></h3>
+<ul>
+<li><code>local_addr</code></li>
+<li><code>local_port</code></li>
+<li><code>remote_addr</code></li>
+<li><code>remote_port</code></li>
+<li><code>connection_type</code>: <code>TCP</code> || <code>UDP</code>,</li>
+</ul>
+<h3 id="connection-statistic-data"><a class="header" href="#connection-statistic-data">Connection statistic data</a></h3>
+<ul>
+<li><code>connection</code>: <a href="virtual-sensor/index.html#connection">Connection</a></li>
+<li><code>packet_stats</code>: <a href="virtual-sensor/index.html#network-packet-statistics-data">Packet statistics</a></li>
+</ul>
+<h3 id="network-packet-statistics-data"><a class="header" href="#network-packet-statistics-data">Network packet statistics data</a></h3>
+<p>Packet count:</p>
+<ul>
+<li><code>num_sent</code></li>
+<li><code>num_recv</code></li>
+</ul>
+<p>Data count in link layer:</p>
+<ul>
+<li><code>data_sent</code></li>
+<li><code>data_recv</code></li>
+</ul>
+<p>Data count in higher network layer:</p>
+<ul>
+<li><code>real_data_sent</code></li>
+<li><code>real_data_recv</code></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="appendix"><a class="header" href="#appendix">Appendix</a></h1>
 <p>The following sections show how to deploy &amp; operate the entire system.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="github-workflows-settings"><a class="header" href="#github-workflows-settings">Github workflows settings</a></h1>
