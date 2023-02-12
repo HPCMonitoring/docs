@@ -4,10 +4,10 @@
 
 ## Installation
 
-Install [Rust toolchain](https://www.rust-lang.org/tools/install) first. Then install `mdbook`:
+Download `mdbook` and add into `/usr/local/bin` folder:
 
 ```bash
-cargo install mdbook
+curl -sSL https://github.com/rust-lang/mdBook/releases/download/v0.4.14/mdbook-v0.4.14-x86_64-unknown-linux-gnu.tar.gz | sudo tar -xz --directory=/usr/local/bin
 ```
 
 ## How to use
