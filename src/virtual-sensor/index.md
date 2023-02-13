@@ -75,6 +75,13 @@ interface KafkaMessage {
 
 Note that a process runs in container such as `Docker`, `LXC` ... or runs in a VM has its own namespace.
 
+### Sample data from `/proc/$PID/net/dev` file
+
+|Interface name   |Receive ||||||| |Transmit ||||||| |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|   |bytes|packets|errs|drop|fifo|frame|compressed|multicast|bytes|packets|errs|drop|fifo|colls|carrier|compressed|
+|lo|2469224|19558|0|0|0|0|0|0|2469224|19558|0|0|0|0|0|0|
+
 ## Helpful tools
 
 Some useful command lines:
