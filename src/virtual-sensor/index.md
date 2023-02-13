@@ -2,27 +2,33 @@
 
 Virtual sensor descriptions.
 
+## Helpful libraries
+
+- [JSON in modern C++](https://github.com/nlohmann/json)
+- [Boost C++ Libraries](https://www.boost.org/)
+- [Kafka Client](https://docs.confluent.io/kafka-clients/librdkafka/current/overview.html)
+
 ## Data collection
 
 ### Payload's content interfaces
 
 ```typescript
 interface Process {
+    name: string;
     pid: number
     parentPid: number
     uid: number
-    effectiveUid: number
     gid: number
-    effectiveGid: number
     executePath: string
     command: string
-    memoryUsage: number // In KB
-    cpuTime: number
-    cpuUtilization: number // In %
-    networkInBandwidth: number // What interface ???
+    virtualMemoryUsage: number  // In KB
+    physicalMemoryUsage: number // In KB
+    cpuTime: number             // In ms
+    cpuUsage: number            // In %
+    networkInBandwidth: number  // What interface ???
     networkOutBandwidth: number
-    ioWrite: number // In KB
-    ioRead: number // In KB
+    ioWrite: number             // In KB
+    ioRead: number              // In KB
 }
 
 interface NetworkInterface {
