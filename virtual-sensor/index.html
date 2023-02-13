@@ -136,24 +136,30 @@
                     <main>
                         <h1 id="virtual-sensor"><a class="header" href="#virtual-sensor">Virtual Sensor</a></h1>
 <p>Virtual sensor descriptions.</p>
+<h2 id="helpful-libraries"><a class="header" href="#helpful-libraries">Helpful libraries</a></h2>
+<ul>
+<li><a href="https://github.com/nlohmann/json">JSON in modern C++</a></li>
+<li><a href="https://www.boost.org/">Boost C++ Libraries</a></li>
+<li><a href="https://docs.confluent.io/kafka-clients/librdkafka/current/overview.html">Kafka Client</a></li>
+</ul>
 <h2 id="data-collection"><a class="header" href="#data-collection">Data collection</a></h2>
 <h3 id="payloads-content-interfaces"><a class="header" href="#payloads-content-interfaces">Payload's content interfaces</a></h3>
 <pre><code class="language-typescript">interface Process {
+    name: string;
     pid: number
     parentPid: number
     uid: number
-    effectiveUid: number
     gid: number
-    effectiveGid: number
     executePath: string
     command: string
-    memoryUsage: number // In KB
-    cpuTime: number
-    cpuUtilization: number // In %
-    networkInBandwidth: number // What interface ???
+    virtualMemoryUsage: number  // In KB
+    physicalMemoryUsage: number // In KB
+    cpuTime: number             // In ms
+    cpuUsage: number            // In %
+    networkInBandwidth: number  // What interface ???
     networkOutBandwidth: number
-    ioWrite: number // In KB
-    ioRead: number // In KB
+    ioWrite: number             // In KB
+    ioRead: number              // In KB
 }
 
 interface NetworkInterface {
