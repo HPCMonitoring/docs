@@ -28,17 +28,15 @@ For book structure guide, visit <https://rust-lang.github.io/mdBook/format/summa
 
 This section will show you how to use `gh-pages` to deploy this book on your own domain.
 
-First, click `Use this template` button & choose `Create a new repository`.
+Firstly, click `Use this template` button & choose `Create a new repository`.
 
 ![image1](./assets/create-repo-from-template.png)
 
-Then, you will be redirected to create new repository page of Github. Filter out informations and submit.
-
-After all, the new repository should look like this:
+Then, you will be redirected to create new repository page of Github. Filter out informations and submit. The new repository should look like this:
 
 ![image2](./assets/create-repo-success.png)
 
-Second, in your already created repository, visit `Setting` -> `Pages`. Setting pages like this:
+Secondly, in your already created repository, visit `Setting` -> `Pages` and configure like this:
 
 ![image3](./assets/setting.png)
 
