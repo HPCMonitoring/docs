@@ -23,3 +23,25 @@ mdbook serve [--port <your_port>]
 If `--port` option is not provided, default host port is `3000`.
 
 For book structure guide, visit <https://rust-lang.github.io/mdBook/format/summary.html>.
+
+## Use this template to create your own document page
+
+This section will show you how to use `gh-pages` to deploy this book on your own domain.
+
+First, click `Use this template` button & choose `Create a new repository`.
+
+![image1](./assets/create-repo-from-template.png)
+
+Then, you will be redirected to create new repository page of Github. Filter out informations and submit.
+
+After all, the new repository should look like this:
+
+![image2](./assets/create-repo-success.png)
+
+Second, in your already created repository, visit `Setting` -> `Pages`. Setting pages like this:
+
+![image3](./assets/setting.png)
+
+Finally, wait for some minutes and refresh current page. You will see the result:
+
+![image3](./assets/result.png)
