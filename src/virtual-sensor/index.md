@@ -95,3 +95,7 @@ Some useful command lines:
 - `sysstat`
 - `df`
 - `free`
+
+## Build `systemd` service
+
+<https://www.tecmint.com/create-systemd-service-linux/>
